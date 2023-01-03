@@ -22,6 +22,6 @@ class C(object):
 
 c = C()
 c.x = 'KK'  # setter called
-foo = c.x    # getter called
+foo = c.x  # getter called
 print(foo)
-del c.x      # deleter called
+del c.x  # deleter called

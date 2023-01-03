@@ -1,4 +1,3 @@
-
 class BoardCell:
     def __init__(self) -> None:
         self.row = -1

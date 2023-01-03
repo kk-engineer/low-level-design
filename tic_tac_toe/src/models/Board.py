@@ -1,4 +1,5 @@
-from src.models.BoardCell  import BoardCell
+from src.models.BoardCell import BoardCell
+
 
 class Board:
     def __init__(self, rows, cols) -> None:
@@ -9,5 +10,4 @@ class Board:
 
     def initialize_board(self):
         self.cells = []
-        self.cells = [[BoardCell()]*self.columns for _ in range(self.rows)]
-    
+        self.cells = [[BoardCell()] * self.columns for _ in range(self.rows)]
