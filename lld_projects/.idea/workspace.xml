@@ -2,6 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="814e56d8-3d57-4dad-bf5c-c721fd0e7337" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/models/Operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/models/Operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/models/ParkingSpot.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/models/ParkingSpot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/models/Ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/models/Ticket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking_lot/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking_lot/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/display.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/display.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../snakes_ladders/tests/GameServiceTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../snakes_ladders/tests/GameServiceTest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,13 +24,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Stub" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2Jx59GYitbMgCQz4P9Dlx1rOcBI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
