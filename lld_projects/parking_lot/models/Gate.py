@@ -4,7 +4,7 @@ from parking_lot.models.ParkingLot import ParkingLot
 
 
 class Gate(models.Model):
-    location = models.TextField
+    location = models.TextField(default='East Wing')
     parking_lot = models.ForeignKey(ParkingLot, on_delete=models.CASCADE)
 
     class Meta:
