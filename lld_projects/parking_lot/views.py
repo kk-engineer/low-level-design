@@ -15,15 +15,14 @@ def index_page(request):
 def create_ticket(request):
     if request.method == 'POST':
         form = TicketForm(data=request.POST)
-        #vehicle = request.vehicle
-        #Vehicle.objects.get_or_create(testkey=Vehicle(registration=vehicle.registration))
+        # vehicle = request.vehicle
+        # Vehicle.objects.get_or_create(testkey=Vehicle(registration=vehicle.registration))
         if form.is_valid():
             form.save()
             return redirect('main')
     else:
         form = TicketForm()
     return render(request, 'parkingLot/ticket.html', {'form': form})
-
 
 
 def get_spots(request):
