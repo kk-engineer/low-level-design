@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'book_my_show.apps.BookMyShowConfig',
     'parking_lot.apps.ParkingLotConfig',
     'django.contrib.admin',
     'django.contrib.auth',
