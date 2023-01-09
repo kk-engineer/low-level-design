@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block page_body %}
+<h1> Welcome to BookMyShow !!! </h1>
+
+
+<p> Time Now is {{ curr_date }} </p>
+<p> <span> <a href="{% url 'ticket' %}">Book Ticket</a> </span> </p>
+{% endblock %}

@@ -7,7 +7,7 @@ from parking_lot.models import ParkingSpot, Vehicle
 
 
 def index_page(request):
-    return render(request, 'index.html', context={
+    return render(request, 'parkingLot/index.html', context={
         'curr_date': str(datetime.utcnow()),
     })
 
@@ -22,10 +22,10 @@ def create_ticket(request):
             return redirect('main')
     else:
         form = TicketForm()
-    return render(request, 'ticket.html', {'form': form})
+    return render(request, 'parkingLot/ticket.html', {'form': form})
 
 
 
 def get_spots(request):
     spots = ParkingSpot.objects.all()
-    return render(request, 'display.html', {'spots': spots})
+    return render(request, 'parkingLot/display.html', {'spots': spots})

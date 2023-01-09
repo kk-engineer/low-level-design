@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Display{% endblock %}
+
+{% block page_body %}
+<body>
+<p> <span> <a href="/parking_lot">Home</a> </span> </p>
+
+<h1> Parking Spots Status </h1>
+<ul>
+    {% for spot in spots %}
+    <p>
+        <li> {{ spot.vehicle_type }}</li>
+        <li> {{ spot.spot_status }}</li>
+        <li> {{ spot.lot_name }}</li>
+        <li> {{ spot.floor }}</li>
+    </p>
+
+    {% endfor %}
+</ul>
+
+</body>
+
+{% endblock %}
