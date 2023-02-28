@@ -1,3 +1,4 @@
+
 class Home:
 
     def __init__(self) -> None:
@@ -32,14 +33,34 @@ class Home:
     @builder
     def add_balconies(self, count: int):
         self.balconies = count
+    
+    @builder
+    def add_bed_rooms(self, count: int):
+        self.bedRooms = count
+    
+    @builder
+    def add_guest_room(self):
+        self.hasGuestRoom = True 
+    
+    @builder
+    def add_garage(self):
+        self.hasGarage = True 
 
 def client():
-    home = Home()
-    home.add_doors(4) \
+    home1 = Home()
+    home1.add_doors(4) \
         .add_floors(2) \
         .add_swimming_pool() \
         .add_balconies(3)
-    print(vars(home))
+    print(vars(home1))
+
+    home2 = Home()
+    home2.add_balconies(2) \
+        .add_swimming_pool() \
+        .add_doors(1) \
+        .add_floors(5) \
+        .add_garage()
+    print(vars(home2))
 
 client()
 
