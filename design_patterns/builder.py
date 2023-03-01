@@ -1,7 +1,7 @@
 
 class Home:
 
-    def __init__(self) -> None:
+    def __init__(self, *args) -> None:
         self.doors: int
         self.windows: int
         self.bedRooms: int
@@ -20,6 +20,8 @@ class Home:
 
     @builder
     def add_doors(self, doors: int):
+        if doors < 1:
+            raise "At least 1 door required"
         self.doors = doors
     
     @builder
@@ -57,8 +59,8 @@ def client():
     home2 = Home()
     home2.add_balconies(2) \
         .add_swimming_pool() \
-        .add_doors(1) \
-        .add_floors(5) \
+        .add_doors(2) \
+        .add_floors(2) \
         .add_garage()
     print(vars(home2))
 
