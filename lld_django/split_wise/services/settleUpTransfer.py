@@ -11,7 +11,7 @@ from collections import defaultdict
 class SettleUpTransfer:
 
     def process(self, group_in):
-        print("Settling Up: ", group_in)
+        # check if group exists
         group_exists = Group.objects.filter(base_ptr_id=group_in).exists()
         if not group_exists: return
         group = Group.objects.get(base_ptr_id=group_in)
@@ -19,7 +19,7 @@ class SettleUpTransfer:
         paid_by = UserExpensePaidBy.objects.filter(expense_paid__in=queryset)
         owed_by = UserExpenseOwedBy.objects.filter(expense_owed__in=queryset)
 
-        
+        # Calculate the net share of each user    
         user_net_share = defaultdict(int)
         for payer in paid_by:
             amount = payer.user_expense_paid.amount
@@ -31,12 +31,13 @@ class SettleUpTransfer:
             user = ower.user_expense_owed.ue_user
             user_net_share[user] -= amount
         
+        # Share : +ve = paid , -ve = owed    
         paid_by_heap, owed_by_heap = [], []
         for user, amount in user_net_share.items():
             if amount > 0:
                 # heap compares the elements sequentially, 
                 # if 1st elt is same, 2nd is compared and so on ...
-                #heappush(paid_by_heap, (-amount, id(user), user)) 
+                # -ve for max heap
                 heappush(paid_by_heap, (-amount, id(user), user))
             elif amount < 0:
                 heappush(owed_by_heap, (amount, id(user), user)) 
@@ -48,37 +49,27 @@ class SettleUpTransfer:
             # Should not settle with self
             if curr_owed_user == curr_paid_user: continue
 
-            curr_paid_amount, curr_owed_amount = -curr_paid_amount, -curr_owed_amount
-            settled_amount = 0
-            if curr_paid_amount > curr_owed_amount:
-                # check if already settled
-                already_settled = Transfer.objects.filter(Q(from_user=curr_owed_user) & 
+            # if already settled, continue
+            already_settled = Transfer.objects.filter(Q(from_user=curr_owed_user) & 
                                                             Q(to_user=curr_paid_user) &
                                                             Q(group_in=group_in)
                                                             ).exists()
-                if already_settled: continue
-                
+            if already_settled: continue
+
+            curr_paid_amount, curr_owed_amount = -curr_paid_amount, -curr_owed_amount
+            settled_amount = 0
+            if curr_paid_amount > curr_owed_amount:
                 settled_amount = curr_owed_amount
                 balance = curr_paid_amount - curr_owed_amount
                 heappush(paid_by_heap, (-balance, paid_id, curr_paid_user))
             elif curr_owed_amount > curr_paid_amount:
-                already_settled = Transfer.objects.filter(Q(from_user=curr_owed_user) & 
-                                                            Q(to_user=curr_paid_user) &
-                                                            Q(group_in=group_in)
-                                                            ).exists()
-                if already_settled: continue
-                
                 settled_amount = curr_paid_amount
                 balance = curr_owed_amount - curr_paid_amount 
                 heappush(owed_by_heap, (-balance, owed_id, curr_owed_user))
             else:
-                already_settled = Transfer.objects.filter(Q(from_user=curr_owed_user) & 
-                                                            Q(to_user=curr_paid_user) &
-                                                            Q(group_in=group_in)
-                                                            ).exists()
-                if already_settled: continue
                 settled_amount = curr_paid_amount
                 
+            # create Transfer Object
             Transfer.objects.create(from_user=curr_owed_user,
                                     to_user=curr_paid_user,
                                     amount=settled_amount,
