@@ -9,8 +9,10 @@ class Expense(Base):
     name = models.CharField(max_length=50)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,\
                                      related_name='expense')
-    group_id = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, 
+    group_in = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, 
                                     related_name='group_expense')
+    participants = models.ManyToManyField(settings.AUTH_USER_MODEL, 
+                                            related_name="shared_expense")
 
     class Meta:
         unique_together = ['name', 'created_by', ]
