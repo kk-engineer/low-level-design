@@ -197,10 +197,10 @@ classDiagram
   BotPlayingStrategy <|-- MediumBotPlayingStrategy
   BotPlayingStrategy <|-- HardBotPlayingStrategy
 
-  Game "*" --o "1" WinningStrategy
-  WinningStrategy <|-- RowWinningStrategy
-  WinningStrategy <|-- ColumnWinningStrategy
-  WinningStrategy <|-- DiagonalWinningStrategy
+  Game "*" --o "1" GameWinningStrategy
+  GameWinningStrategy <|-- RowWinningStrategy
+  GameWinningStrategy <|-- ColWinningStrategy
+  GameWinningStrategy <|-- DiagonalWinningStrategy
 
 ```
 
