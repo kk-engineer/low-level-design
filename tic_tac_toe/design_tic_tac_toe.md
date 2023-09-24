@@ -44,7 +44,7 @@ Current design: Interactive application (CLI/Desktop app)
 * Game
   * Board
   * List<Player> Players
-  * GameStatus
+  * GameState
   * Player Winner
   * NextTurnPlayer
   * List<Move> Moves
@@ -75,12 +75,12 @@ classDiagram
   class Game {
     - Board board
     - Player[] players
-    - WinningStrategy winningStrategy
+    - GameWinningStrategies[] gameWinningStrategies
     - GameState gameState
-    +startGame(Player[], int)
-    +makeMove(PlayerId, int, int)
-    +checkWinner(Board, Player[]) Player
-    +registerPlayer(Player)
+    - int nextTurnPlayerIndex
+    - Move[] moves
+    - Builder builder
+    + makeMove()
   }
 
   class GameState {
@@ -90,98 +90,117 @@ classDiagram
     - WINNER
   }
 
-    class Board {
-    -Cell[][] cells
-    +Board(int size) : Board
+  class GameWinningStrategies {
+    <<Enumeration>>
+    - ROW
+    - COL
+    - DIAGONAL
+  }
+
+  class Board {
+    - int dimension
+    - Cell[][] cells
   }
 
   class Cell {
-    -int row
-    -int column
-    -Player player
-  }
-
-  class Symbol {
-    -String name
-    -Byte[] symbolImage
+    - int row
+    - int column
+    - Player player
   }
 
   class Player {
     <<abstract>>
-    -Symbol symbol
-    +play(Board) BoardCell
+    - Symbol symbol
+    - string name
+    - PlayerType playerType
+    + makeMove(Board) cell
+  }
+
+  class Symbol {
+    - char symbol
+  }
+
+  class PlayerType {
+    <<Enumeration>>
+    - HUMAN
+    - BOT
   }
 
   class HumanPlayer {
-    -User user
-    +play(Board) BoardCell
-  }
-
-  class User {
-    -String name
-    -String email
-    -Byte[] profileImage
+    + makeMove(Board) cell
   }
 
   class BotPlayer {
-    -Level difficultyLevel
-    -MoveStrategy moveStrategy
-    +play(Board) BoardCell
+    - BotDifficultyLevel botDifficultyLevel
+    - BotPlayingStrategy botPlayingStrategy
+    + makeMove(Board) cell
   }
 
-    class MoveStrategy {
-        <<interface>>
-        +makeMove(Board) BoardCell
-    }
+  class BotDifficultyLevel {
+    <<Enumeration>>
+    - EASY
+    - MEDIUM
+    - HARD
+  }
 
-    class EasyMoveStrategy {
-        +makeMove(Board) BoardCell
-    }
+  class Move {
+    - int row
+    - int col
+    - Cell cell
+  }
+  class GameWinningStrategy {
+      <<interface>>
+      + checkWinner(Board, Move) boolean
+  }
 
-    class MediumMoveStrategy {
-        +makeMove(Board) BoardCell
-    }
+  class RowWinningStrategy {
+      + checkWinner(Board, Move) boolean
+  }
 
-    class HardMoveStrategy {
-        +makeMove(Board) BoardCell
-    }
+  class ColWinningStrategy {
+      + checkWinner(Board, Move) boolean
+  }
+
+  class DiagonalWinningStrategy {
+      + checkWinner(Board, Move) boolean
+  }
+
+  class BotPlayingStrategy {
+    <<interface>>
+    + makeMove(Board, Player) cell
+  }
+
+  class EasyBotPlayingStrategy {
+    + makeMove(Board, Player) cell
+  }
+
+  class MediumBotPlayingStrategy {
+    + makeMove(Board, Player) cell
+  }
+
+  class HardBotPlayingStrategy {
+    + makeMove(Board, Player) cell
+  }
 
   Game "1" --* "*" Player
   Game "*" --o "1" GameState
-    Game "1" --* "1" Board
-    Board "1" --* "*" Cell
-    Cell "1" --o "1" Player
-    Player "1" --o "1" Symbol
+  Game "1" --* "1" Board
+  Board "1" --* "*" Cell
+  Cell "1" --o "1" Player
+  Player "1" --o "1" Symbol
   HumanPlayer "*" --o "1" User
   Player <|-- HumanPlayer
   Player <|-- BotPlayer
-  BotPlayer "*" --o "1" MoveStrategy
-  MoveStrategy <|-- EasyMoveStrategy
-  MoveStrategy <|-- MediumMoveStrategy
-  MoveStrategy <|-- HardMoveStrategy
+  BotPlayer "*" --o "1" BotPlayingStrategy
+  BotPlayer "*" --o "1" BotDifficultyLevel
+  BotPlayingStrategy <|-- EasyBotPlayingStrategy
+  BotPlayingStrategy <|-- MediumBotPlayingStrategy
+  BotPlayingStrategy <|-- HardBotPlayingStrategy
 
-
-  class WinningStrategy {
-    <<interface>>
-    +checkWinner(Board, Player[]) Player
-  }
-
-    class NInARowWinningStrategy {
-        +checkWinner(Board, Player[]) Player
-    }
-
-    class NInAColumnWinningStrategy {
-        +checkWinner(Board, Player[]) Player
-    }
-
-    class NInADiagonalWinningStrategy {
-        +checkWinner(Board, Player[]) Player
-    }
-
-    Game "*" --o "1" WinningStrategy
-    WinningStrategy <|-- NInARowWinningStrategy
-    WinningStrategy <|-- NInAColumnWinningStrategy
-    WinningStrategy <|-- NInADiagonalWinningStrategy
+  Game "*" --o "1" WinningStrategy
+  WinningStrategy <|-- RowWinningStrategy
+  WinningStrategy <|-- ColumnWinningStrategy
+  WinningStrategy <|-- DiagonalWinningStrategy
 
 ```
 
