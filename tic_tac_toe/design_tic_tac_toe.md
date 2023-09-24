@@ -186,6 +186,7 @@ classDiagram
   Game "1" --* "*" Move
   Game "*" --o "1" GameState
   Game "1" --* "1" Board
+  Game "1" --o "*" GameWinningStrategies
   Board "1" --* "*" Cell
   Cell "1" --o "1" Player
   Player "1" --o "1" Symbol
