@@ -144,10 +144,10 @@ classDiagram
   }
 
   class Move {
-    - int row
-    - int col
+    - Player player
     - Cell cell
   }
+
   class GameWinningStrategy {
       <<interface>>
       + checkWinner(Board, Move) boolean
@@ -192,6 +192,8 @@ classDiagram
   Player <|-- HumanPlayer
   Player <|-- BotPlayer
   Player "1" --o "1" PlayerType
+  Move "1" --o "1" Player
+  Move "1" --o "1" Cell
   BotPlayer "*" --o "1" BotPlayingStrategy
   BotPlayer "*" --o "1" BotDifficultyLevel
   BotPlayingStrategy <|-- EasyBotPlayingStrategy
@@ -206,8 +208,8 @@ classDiagram
 ```
 
 ## Expectations
-* The code should be working and functionally correct
-* Good software design practices should be followed:
+* The code should be working and functionally correct.
+* Good software design practices should be followed, use design patterns, such as builder, strategy, factory etc.
 * Code should be modular, readable, extensible
 * Separation of concern should be addressed
 * Project structured well across multiple files/ packages
