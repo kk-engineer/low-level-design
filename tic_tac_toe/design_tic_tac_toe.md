@@ -183,14 +183,15 @@ classDiagram
   }
 
   Game "1" --* "*" Player
+  Game "1" --* "*" Move
   Game "*" --o "1" GameState
   Game "1" --* "1" Board
   Board "1" --* "*" Cell
   Cell "1" --o "1" Player
   Player "1" --o "1" Symbol
-  HumanPlayer "*" --o "1" User
   Player <|-- HumanPlayer
   Player <|-- BotPlayer
+  Player "1" --o "1" PlayerType
   BotPlayer "*" --o "1" BotPlayingStrategy
   BotPlayer "*" --o "1" BotDifficultyLevel
   BotPlayingStrategy <|-- EasyBotPlayingStrategy
