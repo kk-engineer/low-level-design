@@ -1,0 +1,2 @@
+# Ignore .idea in all the sub-project directories
+**/.idea/**/*
