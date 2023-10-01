@@ -24,5 +24,3 @@ Your assignment is to implement the Strategy pattern to create strategies for ad
 3. Make sure that the `adjust` method in each strategy class correctly adjusts the video's quality settings based on the supported quality.
 
 `Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests - `ImportError: attempted relative import with no known parent package`
-
-Remember to refactor the existing code to use the Strategy pattern and ensure that your tests pass successfully. Good luck with your assignment!
