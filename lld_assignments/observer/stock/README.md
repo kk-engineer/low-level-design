@@ -23,4 +23,4 @@ Your task is to implement the Observer pattern to create a flexible notification
 ## Instructions
 1. Clone this repository to your local machine.
 2. Implement the Observer pattern by completing the `Publisher` and `Observer` interface and modifying the observer classes (`EmailService`, `SmsService`, `AppService`) and the `StockTradingManager` class.
-3. Run the provided test cases in the `StockTradingManagerTest` class to verify the correctness of your observer pattern implementation.
+3. Run the provided test cases in the `TestStockTradingManager` class to verify the correctness of your observer pattern implementation.
