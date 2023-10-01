@@ -21,4 +21,6 @@ Your task is to implement the Facade pattern to refactor the existing `BookingMa
 2. Create a new class named `BookingFacade`.
 3. Implement the Facade pattern within your `BookingFacade` class to encapsulate interactions with external services.
 4. Ensure that your `BookingFacade` constructor takes the same arguments as the `BookingManager` constructor.
-5. Run the provided test cases in the `BookingManagerTest` class to verify the correctness of your implementation.
+5. Run the provided test cases in the `TestBookingManager` class to verify the correctness of your implementation.
+
+`Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests - `ImportError: attempted relative import with no known parent package`
