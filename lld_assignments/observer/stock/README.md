@@ -24,3 +24,6 @@ Your task is to implement the Observer pattern to create a flexible notification
 1. Clone this repository to your local machine.
 2. Implement the Observer pattern by completing the `Publisher` and `Observer` interface and modifying the observer classes (`EmailService`, `SmsService`, `AppService`) and the `StockTradingManager` class.
 3. Run the provided test cases in the `TestStockTradingManager` class to verify the correctness of your observer pattern implementation.
+
+`Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests -
+`ImportError: attempted relative import with no known parent package`

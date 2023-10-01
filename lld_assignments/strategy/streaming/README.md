@@ -19,8 +19,10 @@ Your assignment is to implement the Strategy pattern to create strategies for ad
 2. Implement the `streamVideo` method in the `VideoStreamingManager` class to use the provided strategy to adjust the video's quality settings.
 
 ## Testing Instructions
-1. Ensure that you have implemented the Strategy pattern correctly by passing the provided test cases in the `VideoStreamingManagerTest` class.
+1. Ensure that you have implemented the Strategy pattern correctly by passing the provided test cases in the `TestVideoStreamManager` class.
 2. The test cases validate that there are three concrete strategies, that the `QualityAdjustmentStrategy` interface has the required methods, and that the `VideoStreamingManager` class is correctly updated to use the strategy for quality adjustment.
 3. Make sure that the `adjust` method in each strategy class correctly adjusts the video's quality settings based on the supported quality.
+
+`Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests - `ImportError: attempted relative import with no known parent package`
 
 Remember to refactor the existing code to use the Strategy pattern and ensure that your tests pass successfully. Good luck with your assignment!

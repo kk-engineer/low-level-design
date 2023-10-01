@@ -22,4 +22,6 @@ Implement a `NotificationFactory` class that follows the Simple Factory pattern.
 
 2. Implement the `NotificationFactory` class that implements the Simple Factory pattern. Add a method to create notifications based on `NotificationType` and other parameters.
 
-3. Run the provided test cases in the `NotificationTest` class to verify the correctness of your implementation. The tests will check if all notifications have a common parent class and if the factory class can correctly create notifications based on the notification type, recipient, and message.
+3. Run the provided test cases in the `TestNotificationService` class to verify the correctness of your implementation. The tests will check if all notifications have a common parent class and if the factory class can correctly create notifications based on the notification type, recipient, and message.
+
+`Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests - `ImportError: attempted relative import with no known parent package`

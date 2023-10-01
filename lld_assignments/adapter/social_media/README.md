@@ -19,4 +19,6 @@ Your goal is to implement the Adapter pattern to create adapter classes for diff
 ## Instructions
 1. Clone this repository to your local machine.
 2. Implement the Adapter pattern by creating adapter classes that implement the `SocialMediaAdapter` interface and adapt the APIs of different social media platforms.
-3. Run the provided test cases in the `SocialMediaAdapterTest` class to verify the correctness of your adapter pattern implementation. Make sure your adapters have the expected methods and interact with the platform APIs as required.
+3. Run the provided test cases in the `TestSocialMediaAdapter` class to verify the correctness of your adapter pattern implementation. Make sure your adapters have the expected methods and interact with the platform APIs as required.
+
+`Important`: Use PyCharm IDE to run the test cases, else you may get the following error when you run the tests - `ImportError: attempted relative import with no known parent package`
