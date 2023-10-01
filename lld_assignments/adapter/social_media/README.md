@@ -14,7 +14,7 @@ Your goal is to implement the Adapter pattern to create adapter classes for diff
 
 3. **Use composition**: Create adapter classes that internally use instances of the actual social media platform APIs. You should not modify the platform APIs directly. Instead, create methods in the adapter classes that map to the platform APIs and perform the necessary transformations.
 
-4. **Test your implementation**: Run the provided test cases in the `SocialMediaAdapterTest` class to ensure that your adapter classes work correctly. These test cases will check if your adapters have the required methods and if they interact with the platform APIs properly.
+4. **Test your implementation**: Run the provided test cases in the `TestSocialMediaAdapter` class to ensure that your adapter classes work correctly. These test cases will check if your adapters have the required methods and if they interact with the platform APIs properly.
 
 ## Instructions
 1. Clone this repository to your local machine.
